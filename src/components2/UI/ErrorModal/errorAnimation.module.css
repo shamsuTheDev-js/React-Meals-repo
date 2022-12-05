@@ -1,0 +1,34 @@
+.modal {
+  animation: modal 0.5s;
+}
+.backdrop {
+  animation: backdrop 1s;
+}
+@supports (scale: 0.5) {
+  @keyframes modal {
+    from {
+      scale: 0.5;
+    }
+    to {
+      scale: 1;
+    }
+  }
+}
+@supports not (scale: 0.5) {
+  @keyframes modal {
+    from {
+      transform: scale(0.5);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+}
+@keyframes backdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.4;
+  }
+}

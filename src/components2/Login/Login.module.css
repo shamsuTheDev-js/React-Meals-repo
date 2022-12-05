@@ -1,0 +1,96 @@
+.form {
+  width: 90%;
+  margin: 5%;
+  margin-top: 7%;
+  padding: 0.5rem;
+  position: relative;
+  left: 0.5%;
+  animation: scale 0.5s;
+}
+form {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  width: 100%;
+  display: grid;
+  animation: opacity 1s;
+}
+@supports (scale: 1) {
+  @keyframes scale {
+    from {
+      scale: 0.5 1;
+    }
+    to {
+      scale: 1;
+    }
+  }
+}
+@supports not (scale: 1) {
+  @keyframes scale {
+    from {
+      transform: scale(0.5, 1);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+}
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.input label {
+  color: rgb(236, 236, 30);
+}
+.input input {
+  background: yellow;
+  border-radius: 0.5rem;
+  width: 80%;
+  padding-left: 0.5rem;
+  height: auto;
+  outline: transparent;
+  border-color: rgb(156, 156, 13);
+  align-self: normal;
+  transition: all 0.3s;
+}
+.input input:focus {
+  transform: scale(1.03, 1);
+
+  /* transform: translate(0.9px, 0px); */
+}
+.actions {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0.5rem;
+}
+.invalid-input {
+  background: red !important;
+}
+@media only screen and (min-width: 768px) {
+  .form {
+    width: 50%;
+    padding: 3rem;
+    left: 20%;
+  }
+  .input {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+  .input input {
+    width: 65%;
+    height: 40%;
+    margin: 1rem;
+    margin-left: 0rem;
+  }
+  .actions {
+    justify-content: center;
+  }
+}

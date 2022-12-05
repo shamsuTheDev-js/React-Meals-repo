@@ -1,0 +1,67 @@
+.odd {
+  animation: oddItems 0.5s;
+}
+.even {
+  animation: evenItems 0.5s;
+}
+.description {
+  animation: text 1s;
+}
+@supports (translate: 10rem) {
+  @keyframes text {
+    0% {
+      scale: 0.5;
+      color: rgb(255, 255, 143);
+    }
+    50% {
+      scale: 1;
+      color: rgb(255, 255, 143);
+    }
+    100% {
+      scale: 1;
+      color: black;
+    }
+  }
+  @keyframes oddItems {
+    from {
+      rotate: 60deg;
+      scale: 0.07;
+      translate: 30rem 0rem;
+    }
+    to {
+      rotate: 0deg;
+      scale: 1;
+      translate: 0rem;
+    }
+  }
+  @keyframes evenItems {
+    from {
+      rotate: -60deg;
+      scale: 0.07;
+      translate: -30rem 0rem;
+    }
+    to {
+      rotate: 0deg;
+      scale: 1;
+      translate: 0rem;
+    }
+  }
+}
+@supports not (translate: 10rem) {
+  @keyframes oddItems {
+    from {
+      transform: translate(20rem, 0rem);
+    }
+    to {
+      transform: translate(0rem);
+    }
+  }
+  @keyframes evenItems {
+    from {
+      transform: translate(-20rem, 0rem);
+    }
+    to {
+      transform: translate(0rem);
+    }
+  }
+}

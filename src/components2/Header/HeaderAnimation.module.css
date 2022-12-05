@@ -1,0 +1,39 @@
+.head {
+  /*color: rgb(253, 253, 86);*/
+  animation: head-animation 2s;
+}
+.header {
+  animation: header-animation 1s;
+}
+@keyframes head-animation {
+  from {
+    color: orange;
+  }
+  to {
+    color: rgb(253, 253, 86);
+  }
+}
+@supports (scale: 1) {
+  @keyframes header-animation {
+    from {
+      scale: 0.5 0.5;
+      translate: 0rem -10rem;
+    }
+    to {
+      scale: 1;
+      translate: 0rem;
+    }
+  }
+}
+@supports not (scale: 1) {
+  @keyframes header-animation {
+    from {
+      transform: translate(0rem, -10rem);
+      transform: scale(0.5, 0.5);
+    }
+    to {
+      transform: translate(0rem);
+      transform: scale(1);
+    }
+  }
+}
