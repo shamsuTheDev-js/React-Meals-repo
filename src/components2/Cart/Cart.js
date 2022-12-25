@@ -30,12 +30,16 @@ const Cart = (props) => {
               </div>
               <div className={styles["meal-price"]}>{" " + item.price}</div>
               <div className={styles["meal-footer"]}>
-                <Button>Buy</Button>
+                <Button>Purchase</Button>
                 <span className={styles.date}>
                   Date-added:
                   {` ${item.date.getDate()}/ ${
                     item.date.getMonth() + 1
-                  }/ ${item.date.getFullYear()} at ${item.date.getHours()}:${item.date.getMinutes()}`}
+                  }/ ${item.date.getFullYear()} at ${item.date.getHours()}:${
+                    item.date.getMinutes() < 10
+                      ? "0" + item.date.getMinutes().toString()
+                      : item.date.getMinutes()
+                  }`}
                 </span>
               </div>
             </Card>

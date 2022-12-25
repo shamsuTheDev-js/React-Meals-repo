@@ -139,12 +139,13 @@ const Content = (props) => {
     //console.log(defaultItem);
   };
   const addToCartHandler = ({ target }) => {
-    props.onAddedToCart({
+    ctx.updateCart({
       key: Math.random().toString(),
       name: target.parentNode.parentNode.querySelector("h3").textContent,
       value: target.parentNode.parentNode.querySelector("h3").textContent,
       price: target.parentNode.parentNode.querySelector("button").textContent,
       amount: target.parentNode.querySelector(".clicked").textContent,
+      date: new Date(),
     });
     let item = target.parentNode.querySelector(".clicked").id;
     setError({

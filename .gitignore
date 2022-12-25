@@ -11,6 +11,11 @@
 # production
 /build
 
+# development(me)
+src/components/
+src/store/
+src/App.js
+
 # misc
 .DS_Store
 .env.local

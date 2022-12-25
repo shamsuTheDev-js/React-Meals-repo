@@ -9,6 +9,8 @@ const Context = React.createContext({
   meals: () => {},
   editMeals: () => {},
   updatedMeals: ["updated-items"],
+  updateCart: () => {},
+  cartItems: ["cartItems"],
   onLogout: () => {},
   onAdminLogin: () => {},
   onLogin: (email, password) => {},
@@ -18,6 +20,7 @@ export const ContextProvider = (props) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [val, setVal] = useState([]);
   const [admin, setAdmin] = useState(null);
+  const [cartItems, setCartItems] = useState([]);
   const [savedPrice, setSavedPrice] = useState([
     {
       key: "i1",
@@ -72,6 +75,11 @@ export const ContextProvider = (props) => {
     setAdmin(state);
     console.log(val);
   };
+  const cartItemHandler = (newItem) => {
+    cartItems.length > 0
+      ? setCartItems((prev) => [newItem, ...prev])
+      : setCartItems([newItem]);
+  };
   const adminLoginHandler = (details) => {
     const id = sessionStorage.getItem(details.email);
     details.password === id && setAdmin(true);
@@ -85,6 +93,8 @@ export const ContextProvider = (props) => {
         meals: addMealsHandler,
         editMeals: editMealsHandler,
         updatedMeals: savedPrice,
+        updateCart: cartItemHandler,
+        cartItems: cartItems,
         user: loggedIn && val,
         onLogout: logoutHandler,
         onAdminLogin: adminLoginHandler,

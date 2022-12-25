@@ -41,7 +41,11 @@ const DisplayContent = (props) => {
                 id="price"
                 className={`${Classes.price}`}
               >
-                Price : NGN {ctx.adminLoggedIn === null && item.value}
+                Price : NGN{" "}
+                {ctx.adminLoggedIn === null &&
+                  (Number.isInteger(Number(item.value))
+                    ? Number(item.value).toFixed(2).toString()
+                    : item.value)}
                 {ctx.adminLoggedIn && (
                   <input
                     type="number"
@@ -50,7 +54,7 @@ const DisplayContent = (props) => {
                     onChange={props.priceChangeHandler}
                     /* onFocus={props.focusHandler} */
                     onBlur={props.blurHandler}
-                    value={item.value}
+                    value={Number(item.value).toFixed(2).toString()}
                   />
                 )}
               </Button>
